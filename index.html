@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mokshanvi Digital Mart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f1f3f6;
+        }
+
+        header {
+            background: #2874f0;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .search {
+            padding: 10px;
+            background: white;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 45%;
+            background: white;
+            margin: 10px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .title {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .price {
+            color: green;
+            font-size: 18px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .discount {
+            color: red;
+            font-size: 13px;
+        }
+
+        .detail-page {
+            display: none;
+            padding: 15px;
+            background: white;
+        }
+
+        .detail-page img {
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .back {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>Mokshanvi Digital Mart</header>
+
+<div class="search">
+    <input type="text" placeholder="Search products...">
+</div>
+
+<!-- PRODUCT LIST -->
+<div id="home" class="container">
+
+    <div class="card" onclick="showDetail('p1')">
+        <img src="Nothing Headphone 1.png">
+        <div class="title">Nothing Headphone 1</div>
+        <div class="old-price">₹21999</div>
+        <div class="price">₹2999</div>
+        <div class="discount">86% OFF</div>
+    </div>
+
+    <div class="card" onclick="showDetail('p2')">
+        <img src="Mobile Gimbal.png">
+        <div class="title">Mobile Gimbal</div>
+        <div class="old-price">₹4999</div>
+        <div class="price">₹1999</div>
+        <div class="discount">60% OFF</div>
+    </div>
+
+    <div class="card" onclick="showDetail('p3')">
+        <img src="Apple Watch Series 11.png">
+        <div class="title">Apple Watch Series 11</div>
+        <div class="old-price">₹49900</div>
+        <div class="price">₹3999</div>
+        <div class="discount">92% OFF</div>
+    </div>
+
+</div>
+
+<!-- DETAIL PAGE -->
+
+<div id="p1" class="detail-page">
+    <img src="headphone.png">
+    <img src="headphone.png">
+    <h2>Nothing Headphone 1</h2>
+    <p>• Active Noise Cancellation<br>• 40hr Battery<br>• Wireless Bluetooth</p>
+    <div class="old-price">₹21999</div>
+    <div class="price">₹2999</div>
+    <button onclick="order('Nothing Headphone 1')">Order on WhatsApp</button>
+    <button class="back" onclick="goBack()">Back</button>
+</div>
+
+<div id="p2" class="detail-page">
+    <img src="gimbal.png">
+    <img src="gimbal.png">
+    <h2>Mobile Gimbal</h2>
+    <p>• 3 Axis Stabilization<br>• Smooth Video<br>• Rechargeable</p>
+    <div class="old-price">₹4999</div>
+    <div class="price">₹1999</div>
+    <button onclick="order('Mobile Gimbal')">Order on WhatsApp</button>
+    <button class="back" onclick="goBack()">Back</button>
+</div>
+
+<div id="p3" class="detail-page">
+    <img src="watch.png">
+    <img src="watch.png">
+    <h2>Apple Watch Series 11</h2>
+    <p>• Health Tracking<br>• GPS<br>• Premium Design</p>
+    <div class="old-price">₹49900</div>
+    <div class="price">₹3999</div>
+    <button onclick="order('Apple Watch Series 11')">Order on WhatsApp</button>
+    <button class="back" onclick="goBack()">Back</button>
+</div>
+
+<script>
+function showDetail(id) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById(id).style.display = "block";
+}
+
+function goBack() {
+    document.getElementById("home").style.display = "flex";
+    let pages = document.getElementsByClassName("detail-page");
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+}
+
+function order(product) {
+    let phone = "916281968705";
+    let message = "I want to order " + product;
+    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message));
+}
+</script>
+
+</body>
+</html>
